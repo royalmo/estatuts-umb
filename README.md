@@ -4,7 +4,8 @@ Aquest repositori conté un versionat dels estatuts de la
 [Unió Musical del Bages](https://www.umbages.cat). S'utilitza *git*
 per mantenir una mica d'historial dels canvis efectuats.
 
-Utilitza LaTeX per a compilar-lo.
+Utilitza LaTeX per a compilar-lo. S'ha utilitzat com a model en molts aspectes
+els [estatuts del CAE](https://cae.cat/wp-content/uploads/2023/11/estatuts-diligenciats-cae-2023.pdf).
 
 ## Instal·lar dependències
 
