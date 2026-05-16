@@ -9,6 +9,30 @@
 \usepackage{silence}
 \WarningFilter{latex}{Command \showhyphens has changed}
 
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+
+\usepackage[draft]{changes} % final or draft
+\sethlcolor{green!30}
+\setaddedmarkup{\begingroup\color{black}\sethlcolor{green!30}\hl{#1}\endgroup}
+\setdeletedmarkup{\begingroup\color{red!50}\sout{#1}\endgroup}
+\definecolor{rephraseblue}{RGB}{200,220,255}
+\newcommand{\rephrased}[1]{%
+  \begingroup
+  \sethlcolor{rephraseblue!40}%
+  \hl{#1}%
+  \endgroup
+}
+\newcommand{\unclear}[1]{%
+  \begingroup
+  \sethlcolor{orange!40}%
+  \hl{#1}%
+  \endgroup
+}
+% Examples
+% This is \deleted{old text} \added{new text}.
+% This is \replaced{new text}{old text}.
+
 % \setlist[enumerate,1]{label=\arabic*.}
 % \setlist[enumerate,2]{label=\alph*)}
 
@@ -174,6 +198,7 @@
 % =========================
 % Document
 % =========================
+\setlength {\marginparwidth }{2cm}
 \begin{document}
 
 % ---------- Portada ----------
@@ -229,35 +254,53 @@
 % \tableofcontents
 % \newpage
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \Capitol{Denominació, finalitats i règim jurídic}
 \CapitolLabel{denom-origen}
 
-\Art{Denominació i finalitats}
+\Art{Denominació}
 \ArtLabel{denominacio}
 
 \begin{enumerate}
-    \item Amb el nom d'\UMB es constitueix per temps indefinit la present Associació que té com a finalitat el foment cultural mitjançant la música en totes les seves manifestacions possibles.
-    \item La \UMB és una entitat sense interès lucratiu.
-    \item La \UMB es regeix pels presents Estatuts i les disposicions legals vigents.
+    \item[] L'associació \textbf{\color{black!60}\UMB} és una entitat sense ànim de lucre que regula les seves activitats d'acord amb el que estableix la Llei 4/2008, de 24 d'abril, del llibre tercer del Codi civil de Catalunya, relatiu a les persones jurídiques; la Llei orgànica 1/2002, de 22 de març, reguladora del dret d'associació, aquests estatuts, i tots aquells acords i normes complementàries que puguin adoptar els seus òrgans de govern.
 \end{enumerate}
 
-\Art{Objectius}
+\Art{Finalitats i objectius}
 \ArtLabel{objectius}
 
 \begin{enumerate}
-    \item[] Els objectius de l'Associació són els següents:
+    \item Els fins de l'associació són:
     \begin{enumerate}
-        \item Construir un programa de formació i lleure cultural pels seus associats i associades.
-        \item Promoure activitats musicals a la comarca del Bages.
-        \item Col·laborar amb altres entitats culturals i difondre l'afecció i la pràctica de la música.
-        \item Iniciar i mantenir intercanvis musicals amb altres entitats amb finalitats similars d'arreu dels Països Catalans.
+        \item Fomentar, promoure i difondre la cultura musical, especialment en l'àmbit de la música de banda, a la Catalunya Central.
+        \item Facilitar l'accés a la pràctica musical col·lectiva a persones de diferents edats i nivells, promovent la inclusió i la participació.
+        \item Esdevenir un espai de trobada intergeneracional per a músics amb inquietuds diverses, afavorint el desenvolupament personal i artístic.
+        \item Impulsar la sensibilització i l'interès per la música en totes les seves manifestacions.
+        \item Contribuir a la dinamització cultural del territori mitjançant activitats musicals.
     \end{enumerate}
+    \item Per aconseguir les seves finalitats, l'associació du a terme les activitats següents:
+    \begin{enumerate}
+        \item Organització i realització de concerts i actuacions musicals en diferents municipis.
+        \item Participació en esdeveniments culturals, festius i tradicionals.
+        \item Assajos, formació i preparació musical dels membres de les diverses Seccions.
+        \item Col·laboracions amb altres entitats, institucions i organismes culturals.
+        \item Promoció d'activitats de difusió musical, incloent enregistraments i comunicació pública de les activitats.
+        \item Qualsevol altra activitat relacionada directament amb els fins de l'associació.
+    \end{enumerate}
+    \item En queda exclòs tot ànim de lucre.
+\end{enumerate}
+
+\Art{Beneficiaris i beneficiàries de les activitats de l'associació}
+
+\begin{enumerate}
+    \item Les activitats de la \UMB s'adrecen de forma genèrica a infants, adolescents, persones joves i adultes, independentment de la seva edat, gènere, origen, cultura i religió.
+    \item A l'hora de determinar les persones beneficiàries de les diferents actuacions es farà actuant amb criteris d'imparcialitat i no discriminació d'entre les persones i entitats que ho sol·licitin i que compleixin els requisits objectius específics que es puguin establir en cada cas.
 \end{enumerate}
 
 \Art{Domicili}
 
 \begin{enumerate}
-    \item El domicili actual de l'Associació és al carrer Montsec, núm. 6 de la ciutat de Manresa.
+    \item El domicili actual de l'Associació s'estableix a Sant Fruitós de Bages, al Carrer de Sant Benet, número 8.
     \item El domicili actual podrà traslladar-se a qualsevol municipi de la comarca del Bages per acord de la \JD de l'Associació.
 \end{enumerate}
 
@@ -272,6 +315,8 @@
 \begin{enumerate}
     \item[] L'Associació, com a persona jurídica que és, té plena capacitat per a contractar i obligar-se.
 \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \Capitol{Organització de l'entitat}
 
@@ -310,11 +355,11 @@
 
     La persona que presideix l'\AG té la capacitat de prendre qualsevol iniciativa per a garantir el normal funcionament de la mateixa.
 
-    \item Actuarà de secretari qui ocupi el mateix càrrec a la \JD.
+    \item Actuarà de secretari/a qui ocupi el mateix càrrec a la \JD.
 
     El/la Secretari/a redactarà l'Acta de cada reunió amb un extracte de les deliberacions, el text dels acords que s'hagin adoptat i el resultat numèric de les votacions. Al començament de cada reunió de l'\AG es llegirà l'Acta de la sessió anterior a fi que s'aprovi o s'esmeni. Cinc dies abans, de tota manera, l'Acta i qualsevol documentació vinculada a la mateixa, haurà d'estar exposada en el local social a disposició dels associats.
 
-    L'Acta serà signada pel President/a i el/la Secretari/a.
+    L'Acta serà signada per la Presidència i la Secretaria
 \end{enumerate}
 
 \Art{Competències}
@@ -544,6 +589,8 @@
     \item La Comissió Assessora podrà elaborar un informe que reculli els seus suggeriments i propostes. Aquest informe serà sotmès per la \JD a la consideració de l'\AGO.
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \Capitol{Drets i deures dels socis i sòcies}
 
 \Art{Els membres de l'associació}
@@ -595,44 +642,51 @@
     \item Tots aquests casos contemplats en l'apartat anterior seran ratificats per l'\AGO.
 \end{enumerate}
 
-\Capitol{Economia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\Art{Patrimoni}
+\Capitol{El règim econòmic}
 
-\begin{enumerate}
-    \item[] En el moment de la seva constitució, l'Entitat no té cap patrimoni material.
-\end{enumerate}
-
-\Art{Pressupost i recursos econòmics}
+\Art{Recursos econòmics}
 
 \begin{enumerate}
-    \item El pressupost màxim anual de l'Entitat no podrà superar els deu milions de pessetes.
-    \item Els recursos econòmics dels quals es nodrirà l'Associació seran:
+    \item[] Els recursos econòmics dels quals es nodrirà l'Associació seran:
     \begin{itemize}
         \item Les quotes dels associats i associades.
         \item Els imports obtinguts de les actuacions de les seves Seccions.
         \item Les subvencions de les Institucions públiques i privades.
         \item Les donacions, herències o llegats fetes a l'Entitat i que puguin ser acceptades per aquesta.
         \item Les rendes del patrimoni mateix o bé d'altres ingressos que puguin obtenir-se.
+        \item per qualsevol altra font d'ingressos que sigui acordada per la \JD i que no repercuteixi negativament en l'entitat, havent-ne de donar posterior compte a l'\AG.
     \end{itemize}
+\end{enumerate}
+
+\Art{Quotes i aportacions}
+
+\begin{enumerate}
     \item Tots els membres de l'Associació tenen l'obligació de sostenir-la econòmicament, mitjançant quotes o derrames, de la manera i en la proporció que determini l'\AG, a proposta de la \JD.
 
-    L'\AG podrà establir quotes d'ingrés, quotes periòdiques mensuals -que s'abonaran per mesos, trimestres, semestres o anualitats, segons el que disposi la \JD- i quotes extraordinàries.
+    \item L'\AG podrà establir quotes d'ingrés, quotes periòdiques mensuals -que s'abonaran per mesos, trimestres, semestres o anualitats, segons el que disposi la \JD- i quotes extraordinàries.
+
+    \item Les aportacions voluntàries tindran la consideració de donacions.
 \end{enumerate}
 
 \Art{Exercici econòmic}
 
 \begin{enumerate}
-    \item[] L'exercici econòmic coincidirà amb l'any natural i quedarà tancat el 31 de desembre.
+    \item[] L'exercici econòmic coincideix amb l'any natural i quedarà tancat el 31 de desembre.
 \end{enumerate}
 
 \Art{Comptes corrents}
 
 \begin{enumerate}
-    \item En els comptes corrents o llibretes d'estalvis obertes en establiments de crèdit o d'estalvi, hi figuraran les signatures del President, el Vice-president, el tresorer i un vocal.
+    \item En els comptes corrents, llibretes d'estalvi i altres productes financers oberts en entitats bancàries, hi han de figurar tres signatures, dues de les quals hauran de ser la de la Presidència i la de la Tresoreria. 
 
-    \item Per poder disposar del fons n'hi haurà prou amb dues signatures, de les quals una haurà de ser necessàriament la del Tresorer o bé la del President.
+    \item Per poder disposar dels fons són necessàries dues signatures. Per poder efectuar operacions de traspàs entre comptes de l'entitat n'hi haurà prou amb una única firma.
+
+    \item Aquestes autoritzacions es fan extensives a les operacions fetes a través de banca electrònica.
 \end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \Capitol{Dissolució de l'entitat}
 
@@ -646,7 +700,7 @@
 
 \begin{enumerate}
     \item Dins la mateixa \AGE a la que es refereix l'article anterior, es nomenarà una Comissió liquidadora per portar a terme el procés de dissolució.
-    \item Els membres de l'Associació estan exempts de responsabilitat. personal. La seva responsabilitat quedarà limitada a complir les obligacions que ells mateixos hagin assumit voluntàriament.
+    \item Els membres de l'Associació estan exempts de responsabilitat personal. La seva responsabilitat quedarà limitada a complir les obligacions que ells mateixos hagin assumit voluntàriament.
 \end{enumerate}
 
 \Art{Destinació del patrimoni}
@@ -655,7 +709,7 @@
     \item En cas de dissolució, el patrimoni resultant de la liquidació de béns de l'Associació es destinarà a una altra Entitat Comarcal del Bages amb finalitats similars. En el supòsit que no existís cap Entitat amb aquestes característiques, el patrimoni s'entregarà al Consell Comarcal del Bages per tal que li doni l'ús que consideri més convenient, sempre d'acord amb les finalitats i objectius que estableixen aquests Estatuts.
 \end{enumerate}
 
-%Vegeu \ArtRef{denominacio} i \SeccioRef{finalitats}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \vspace{1.2cm}
 \noindent\textcolor{TextGray}{\textbf{Diligència final}}\\[0.2cm]
