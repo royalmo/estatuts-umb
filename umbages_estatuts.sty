@@ -1,0 +1,47 @@
+% umbages_estatuts.sty
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{umbages_estatuts}[2026/01/19 Estil i macros per estatuts]
+
+% Comptadors
+\newcounter{capitolstatuts}
+\newcounter{secciostatuts}[capitolstatuts]
+\newcounter{artstatuts}
+
+% Format dels comptadors visibles
+\renewcommand{\thecapitolstatuts}{\Roman{capitolstatuts}}
+\renewcommand{\thesecciostatuts}{\arabic{secciostatuts}}
+\renewcommand{\theartstatuts}{\arabic{artstatuts}}
+
+% Perquè apareguin a la TOC com a sections/subsections
+% (necessita hyperref per a enllaços; si no, igual funciona)
+\newcommand{\Capitol}[1]{%
+  \refstepcounter{capitolstatuts}%
+  \section*{Capítol \thecapitolstatuts\ --- #1}%
+  \addcontentsline{toc}{section}{Capítol \thecapitolstatuts\ --- #1}%
+  \markboth{Capítol \thecapitolstatuts}{#1}%
+}
+
+\newcommand{\Seccio}[1]{%
+  \refstepcounter{secciostatuts}%
+  %\subsection*{Secció \thesecciostatuts\ --- #1}%
+  \par\bigskip
+  {\large\bfseries\color{UMBNavy}Secció \thesecciostatuts. #1\par}%
+  \medskip
+  %\addcontentsline{toc}{subsection}{Secció \thesecciostatuts\ --- #1}%
+  \markboth{Secció \thesecciostatuts}{#1}%
+}
+
+\newcommand{\Art}[1]{%
+  \refstepcounter{artstatuts}%
+  \subsection*{Article \theartstatuts. #1}%
+  \addcontentsline{toc}{subsection}{Article \theartstatuts. #1}%
+}
+
+% Ajuda per referències
+\newcommand{\CapitolLabel}[1]{\label{cap:#1}}
+\newcommand{\SeccioLabel}[1]{\label{sec:#1}}
+\newcommand{\ArtLabel}[1]{\label{art:#1}}
+% I per referenciar:
+\newcommand{\CapitolRef}[1]{Capítol~\ref{cap:#1}}
+\newcommand{\SeccioRef}[1]{Secció~\ref{sec:#1}}
+\newcommand{\ArtRef}[1]{Article~\ref{art:#1}}

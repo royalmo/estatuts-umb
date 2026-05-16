@@ -1,0 +1,669 @@
+\documentclass[11pt,a4paper]{article}
+\setlength{\headheight}{25pt}
+
+\usepackage{umbages_estatuts}
+
+\usepackage{enumitem}
+\usepackage{xspace}
+
+\usepackage{silence}
+\WarningFilter{latex}{Command \showhyphens has changed}
+
+% \setlist[enumerate,1]{label=\arabic*.}
+% \setlist[enumerate,2]{label=\alph*)}
+
+\setlist[enumerate,1]{label=\arabic*., ref=\theartstatuts.\arabic*}
+\setlist[enumerate,2]{label=\alph*), ref=\theartstatuts.\arabic{enumi}.\alph*}
+
+\renewcommand{\theenumi}{\theartstatuts.\arabic{enumi}}
+\renewcommand{\theenumii}{\theenumi.\alph{enumii}}
+
+% =========================
+% Macros (editables)
+% =========================
+\newcommand{\sigles}{UMB}
+\newcommand{\nif}{G61068516}
+\newcommand{\registre}{18108}
+\newcommand{\domicili}{C/ Sant Benet 8, 08272 Sant Fruitós de Bages (Barcelona)}
+\newcommand{\ambit}{[Barcelona / Catalunya Central / Catalunya / ...]}
+\newcommand{\dataaprov}{[DATA D'APROVACIÓ EN ASSEMBLEA]}
+\newcommand{\dataconstitucio}{15 de desembre de 1995} % Segons web “Qui som?”
+\newcommand{\email}{\href{mailto:info@umbages.cat}{info@umbages.cat}}
+\newcommand{\web}{\href{https://www.umbages.cat}{www.umbages.cat}}
+
+\newcommand{\UMB}{Unió Musical del Bages\xspace}
+\newcommand{\JD}{Junta Directiva\xspace}
+\newcommand{\AG}{Assemblea General\xspace}
+\newcommand{\AGO}{Assemblea General Ordinària\xspace}
+\newcommand{\AGE}{Assemblea General Extraordinària\xspace}
+\newcommand{\DT}{Direcció Tècnica\xspace}
+\newcommand{\JG}{Junta Gestora\xspace}
+
+% =========================
+% Llengua i tipografia
+% =========================
+\usepackage[catalan]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{lastpage}
+
+% Sans serif (més "modern")
+\usepackage{sourcesanspro} % Font principal sans
+\renewcommand{\familydefault}{\sfdefault}
+
+% =========================
+% Layout
+% =========================
+\usepackage[a4paper,top=3.2cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.18}
+
+\usepackage{microtype}
+\usepackage{parskip} % separació entre paràgrafs sense sagnar
+
+% =========================
+% Colors i fons
+% =========================
+\usepackage{xcolor}
+\usepackage{pagecolor}
+
+% --- COLORS CORPORATIUS (PLACEHOLDER) ---
+% NOTE: Ajusta aquests HEX als de la web umbages.cat quan els tinguis.
+% He posat valors inicials basats en la identitat visual del banner/logo (vermell + blau molt fosc).
+\definecolor{UMBRed}{HTML}{B5121B}
+\definecolor{UMBNavy}{HTML}{0B1B2B}
+
+% Colors auxiliars
+\definecolor{PaperTint}{HTML}{F6F7F9}
+\definecolor{RuleGray}{HTML}{D9DEE6}
+\definecolor{TextGray}{HTML}{384452}
+
+% Fons suau (comentat per defecte per si al registre li agrada més blanc)
+% \pagecolor{PaperTint}
+
+% =========================
+% Enllaços
+% =========================
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=UMBNavy,
+  urlcolor=UMBRed,
+  citecolor=UMBNavy
+}
+
+% =========================
+% Capçaleres / peu
+% =========================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+
+\lhead{\textcolor{TextGray}{\textbf{\UMB}}}
+\rhead{\textcolor{TextGray}{\small Estatuts 2026}}
+\cfoot{\textcolor{TextGray}{Pàgina \thepage\ de \pageref{LastPage}}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RuleGray}\leaders\hrule height \headrulewidth\hfill}}
+
+% Watermark
+\usepackage{transparent}
+\usepackage{datetime2}
+\usepackage{eso-pic}
+\DTMsetdatestyle{ddmmyyyy}
+
+\newcommand{\DraftWatermark}{%
+  \AtPageCenter{%
+    \makebox(0,0){%
+      \rotatebox{45}{%
+        {\transparent{0.5}%
+         \sffamily\bfseries\fontsize{48}{56}\selectfont
+         \textcolor{gray}{ESBORRANY \DTMtoday}}%
+      }%
+    }%
+  }%
+}
+
+\AddToShipoutPictureFG{\DraftWatermark}
+
+% =========================
+% Títols secció
+% =========================
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\Large\bfseries\color{UMBNavy}}
+  {\thesection.}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\large\bfseries\color{UMBRed}}
+  {\thesubsection}{0.6em}{}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.4em}
+
+% =========================
+% Caixes "boniques"
+% =========================
+\usepackage[most]{tcolorbox}
+\tcbset{
+  colback=PaperTint,
+  colframe=RuleGray,
+  arc=3mm,
+  boxrule=0.4pt,
+  left=10pt,right=10pt,top=8pt,bottom=8pt
+}
+
+\newtcolorbox{infobox}{
+  colback=PaperTint,
+  colframe=UMBNavy!25,
+  borderline west={2pt}{0pt}{UMBNavy},
+}
+
+\newtcolorbox{warnbox}{
+  colback=PaperTint,
+  colframe=UMBRed!25,
+  borderline west={2pt}{0pt}{UMBRed},
+}
+
+% =========================
+% Gràfics (logo)
+% =========================
+\usepackage{graphicx}
+
+% =========================
+% Document
+% =========================
+\begin{document}
+
+% ---------- Portada ----------
+\begin{titlepage}
+  \thispagestyle{empty}
+
+  % Banda superior de color
+  % \noindent\colorbox{UMBNavy}{
+  %   \parbox{\dimexpr\textwidth-2\fboxsep\relax}{
+  %     \vspace{10pt}
+  %     \hfill
+  %     \textcolor{white}{\textbf{\sigles}}
+  %     \hfill
+  %     \vspace{10pt}
+  %   }
+  % }
+
+
+  % Logo (placeholder)
+  \begin{center}
+    \vspace{2cm}
+    
+    \includegraphics[width=0.7\textwidth]{assets/logo_umb.pdf}
+
+    \vfill
+
+    {\Huge\bfseries\color{UMBNavy} ESTATUTS DE L'ASSOCIACIÓ}\par
+    \vspace{0.25cm}
+    % {\LARGE\bfseries\color{UMBRed} \UMB}\par
+    % \vspace{0.8cm}
+   % {\large\textcolor{TextGray}{Entitat sense ànim de lucre}}\par
+   {\large\textcolor{TextGray}{Aprovats per l'\AGE del \dataaprov}}\par
+    \vspace{3cm}
+  \end{center}
+
+  %\vspace{0.9cm}
+
+  % \begin{infobox}
+  %   \textbf{Dades bàsiques}\\
+  %   \begin{tabular}{@{}p{0.33\textwidth}p{0.62\textwidth}@{}}
+  %     \textcolor{TextGray}{NIF} & \nif\\
+  %     \textcolor{TextGray}{Registre d'associacions núm.} & \registre\\
+  %     \textcolor{TextGray}{Domicili social} & \domicili\\
+  %     \textcolor{TextGray}{Àmbit d'actuació} & \ambit\\
+  %     \textcolor{TextGray}{Web} & \web\\
+  %     \textcolor{TextGray}{Contacte} & \email\\
+  %     \textcolor{TextGray}{Data de constitució} & \dataconstitucio\\
+  %   \end{tabular}
+  % \end{infobox}
+
+\end{titlepage}
+
+% \tableofcontents
+% \newpage
+
+\Capitol{Denominació, finalitats i règim jurídic}
+\CapitolLabel{denom-origen}
+
+\Art{Denominació i finalitats}
+\ArtLabel{denominacio}
+
+\begin{enumerate}
+    \item Amb el nom d'\UMB es constitueix per temps indefinit la present Associació que té com a finalitat el foment cultural mitjançant la música en totes les seves manifestacions possibles.
+    \item La \UMB és una entitat sense interès lucratiu.
+    \item La \UMB es regeix pels presents Estatuts i les disposicions legals vigents.
+\end{enumerate}
+
+\Art{Objectius}
+\ArtLabel{objectius}
+
+\begin{enumerate}
+    \item[] Els objectius de l'Associació són els següents:
+    \begin{enumerate}
+        \item Construir un programa de formació i lleure cultural pels seus associats i associades.
+        \item Promoure activitats musicals a la comarca del Bages.
+        \item Col·laborar amb altres entitats culturals i difondre l'afecció i la pràctica de la música.
+        \item Iniciar i mantenir intercanvis musicals amb altres entitats amb finalitats similars d'arreu dels Països Catalans.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Domicili}
+
+\begin{enumerate}
+    \item El domicili actual de l'Associació és al carrer Montsec, núm. 6 de la ciutat de Manresa.
+    \item El domicili actual podrà traslladar-se a qualsevol municipi de la comarca del Bages per acord de la \JD de l'Associació.
+\end{enumerate}
+
+\Art{Àmbit territorial}
+
+\begin{enumerate}
+    \item[] L'àmbit territorial de l'Associació és Catalunya, i l'àmbit d'acció preferencial la comarca del Bages. No obstant, les diferents seccions de l'Entitat podran fer actuacions, concerts o audicions allà on siguin requerides.
+\end{enumerate}
+
+\Art{Personalitat jurídica}
+
+\begin{enumerate}
+    \item[] L'Associació, com a persona jurídica que és, té plena capacitat per a contractar i obligar-se.
+\end{enumerate}
+
+\Capitol{Organització de l'entitat}
+
+\Art{Òrgans de l'assiciació}
+
+\begin{enumerate}
+    \item[] L'Entitat serà regida pels següents òrgans:
+    \begin{enumerate}
+        \item L'\AG és l'òrgan sobirà de l'Entitat i està format per tots els associats.
+        \item La \JD és la màxima representació de l'Entitat i el seu òrgan de govern. Depèn únicament i directament de l'Assemblea. L'exercici de tots els càrrecs que la formen serà gratuït.
+        \item Les Seccions
+        \item Les Comissions que es puguin constituir.
+    \end{enumerate}
+\end{enumerate}
+
+\Seccio{L'\AG}
+
+\Art{Convocatòria}
+
+\begin{enumerate}
+    \item L'\AG es reunirà almenys un cop l'any en sessió ordinària i dins el darrer trimestre. La convocatòria haurà de fer-se amb un mínim de quinze dies d'antelació, excepte aquelles que incloguin en l'ordre del dia la renovació de la \JD.
+    \item L'\AG es reunirà en sessió extraordinària:
+    \begin{enumerate}
+        \item Per iniciativa de la Presidència i amb l'acord de la \JD quan ho cregui convenient per tractar afers que hagin de ser discutits en Assemblea i que, pel seu caràcter extraordinari o urgent, no s'escaiguin a ser tractats en l'\AGO.
+        \item Quan ho sol·liciti per escrit el 25\% d'associats. En aquest escrit hi haurà de constar un ordre del dia.
+    \end{enumerate}
+    \item La convocatòria de l'\AGE s'efectuarà amb una antelació de com a mínim vuit dies i dins un període no superior als vint dies.
+    \item L'\AG es reunirà mitjançant convocatòria escrita, a la qual s'expressi l'ordre del dia, així com l'hora i lloc de la celebració. La convocatòria s'enviarà a tots els associats sempre que consti la seva adreça i es col·locarà en el lloc que es determini.
+\end{enumerate}
+
+\Art{Constitució i funcionament}
+
+\begin{enumerate}
+    \item L'\AG quedarà constituïda quan les persones presents siguin la majoria d'associats i associades, i mitja hora després qualsevol que sigui el nombre de socis i sòcies presents.
+    \item L'\AG serà presidida per la Presidència o per la Vice-Presidència de la \JD, i en cas d'absència d'ambdós, pel o la Vocal de més edat.
+
+    La persona que presideix l'\AG té la capacitat de prendre qualsevol iniciativa per a garantir el normal funcionament de la mateixa.
+
+    \item Actuarà de secretari qui ocupi el mateix càrrec a la \JD.
+
+    El/la Secretari/a redactarà l'Acta de cada reunió amb un extracte de les deliberacions, el text dels acords que s'hagin adoptat i el resultat numèric de les votacions. Al començament de cada reunió de l'\AG es llegirà l'Acta de la sessió anterior a fi que s'aprovi o s'esmeni. Cinc dies abans, de tota manera, l'Acta i qualsevol documentació vinculada a la mateixa, haurà d'estar exposada en el local social a disposició dels associats.
+
+    L'Acta serà signada pel President/a i el/la Secretari/a.
+\end{enumerate}
+
+\Art{Competències}
+
+\begin{enumerate}
+    \item És competència de l'\AGO:
+    \begin{enumerate}
+        \item Lectura i aprovació, si s'escau, de l'Acta de l'Assemblea anterior.
+        \item Aprovació del balanç de comptes de cada exercici, així com el pressupost per l'exercici següent. \label{aprovacio-balanc}
+        \item Aprovació de l'Informe de Gestió de la \JD de les activitats fetes en el transcurs de l'Any i dels projectes a realitzar.
+        \item Elecció de la \JD. Les candidatures en bloc que es presentin necessitaran dos terços dels vots dels associats presents per a ésser escollida com a Junta. Si cap candidatura no obtingués l'esmentada majoria, es farà una nova votació entre les dues més votades anteriorment, resultant elegida la que reuneixi major nombre de vots. En cas d'empat, quedarà elegida la candidatura que proposi per a la Presidència el soci o la sòcia de més edat.
+        \item Establir les directrius generals de l'Entitat.
+        \item Modificació, si cal, de les quotes de soci de l'Entitat.
+        \item Les que expressament li atribueixin aquests Estatuts.
+    \end{enumerate}
+    \item És competència de l'\AGE:
+    \begin{enumerate}
+        \item Decidir sobre la modificació dels estatuts.
+        \item Decidir sobre la dissolució de l'Entitat.
+        \item Decidir sobre els afers que no pertoquin a l'\AGO.
+        \item Decidir sobre els afers no inclosos en els estatuts.
+        \item Decidir sobre el manteniment de la confiança en la \JD. En el cas que la confiança en la \JD sigui denegada, es constituirà dins la mateixa \AGE una \JG fins la propera \AGO. \label{confianca}
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Acords}
+
+\begin{enumerate}
+    \item En les reunions de l'\AG, correspon un vot a cada membre de l'Associació.
+    \item Els acords de l'\AGO s'adoptaran per majoria simple dels presents, excepte l'elecció de la \JD, i els de l'\AGE requeriran la majoria de dos terços dels presents.
+    \item La publicació dels acords presos per l'\AG anirà a càrrec de la \JD.
+\end{enumerate}
+
+\Seccio{La \JD}
+
+\Art{Composició}
+
+\begin{enumerate}
+    \item[] La \JD estarà composta per la Presidència, la Vice-presidència, la Secretaria, la Tresoreria, un mínim de dos/dues Vocals i un/a Vocal representant de cada Secció.
+\end{enumerate}
+
+\Art{Elecció}
+
+\begin{enumerate}
+    \item Serà escollida per l'\AGO com a candidatura en bloc, a excepció feta dels/les Vocals representants de les Seccions.
+    \item La \JD podrà representar la seva pròpia candidatura per a la reelecció.
+    \item La \JD sortint convocarà les eleccions amb un mínim de 30 dies d'antelació. 
+    
+    Els candidats i candidates tindran 15 dies per a presentar llurs candidatures que s'hauran de donar a conèixer a tots els socis i sòcies.
+    
+    La votació serà per escrit i secreta, el resultat de l'escrutini serà públic i avalat per la Presidència i la Secretaria de la \JD sortint.
+\end{enumerate}
+
+\Art{Durada dels càrrecs i cessament}
+
+\begin{enumerate}
+    \item Els membres de la \JD són elegits per un període de dos anys.
+    \item El cessament dels càrrecs abans d'extingir-se el termini reglamentari del mandat podrà esdevenir-se per:
+    \begin{enumerate}
+        \item Dimissió voluntària presentada mitjançant escrit en el qual s'exposaran els motius.
+        \item Malaltia que incapaciti per exercir el càrrec.
+        \item Baixa com a membre de l'associació.
+        \item Sanció per una falta greu comesa en l'exercici del càrrec, imposada l'acord amb el que estableix l'\ArtRef{PerduaSoci}.
+    \end{enumerate}
+    \item Les vacants que es produeixin en la \JD es cobriran en la primera \AG que tingui lloc. Mentrestant, qualsevol membre de l'Entitat podrà ocupar provisionalment el càrrec vacant, d'acord amb l'article \ref{presidencia:designar} .
+\end{enumerate}
+
+\Art{Atribucions}
+
+\begin{enumerate}
+    \item[] Seran atribucions de la \JD:
+    \begin{enumerate}
+        \item Representar, dirigir i administrar l'Entitat de la manera més àmplia que reconegui la Llei. Així mateix, complir les decisions preses per l'\AG, d'acord amb les normes, instruccions i directrius que aquesta Assemblea estableixi.
+        \item Prendre els acords que calgui en relació amb la compareixença davant dels organismes públics i per exercir tota mena d'accions legals i interpretar els recursos pertinents.
+        \item Crear i coordinar les Comissions necessàries per al bon funcionament de l'Entitat.
+        \item Coordinar les diferents Seccions i vetllar pel seu bon funcionament.
+        \item Proposar a l'\AG els Reglaments Interns propis de les Seccions.
+        \item Elegir la \DT de les Seccions amb l'Article \ref{seccions:ajustar-disp}.
+        \item Mantenir contactes amb altres entitats, d'acord amb l'\ArtRef{objectius}.
+        \item Elaborar la memòria anual d'activitats i sotmetre-la a l'aprovació de l'\AG.
+        \item Presentar el balanç i l'estat de comptes de cada exercici a l'\AG per a la seva aprovació i confeccionar el pressupost de l'exercici següent.
+        \item Aprovar les despeses no pressupostades que s'hagin de realitzar.
+        \item Sancionar les faltes dels components de l'entitat, d'acord amb aquests Estatuts i els Reglaments Interns.
+        \item Presentar un Informe de la seva gestió a l'\AGO.
+        \item Convocar l'\AG i controlar que es compleixin els acords que s'hi adoptin.
+        \item Proposar a l'\AG les quotes a pagar pels associats i associades.
+        \item Determinar, vista la proposta de la \DT, els concerts o actes en que les Seccions hagin de prendre part.
+        \item Interpretar els presents Estatuts en els casos dubtosos o no previstos, sempre d'acord amb les decisions de l'Assemblea.
+        \item Assumir les funcions delegades per l'\AG.
+        \item Resoldre provisionalment qualsevol cas que no s'hagi previst als Estatuts i donar-ne compte a la propera \AG.
+        \item Qualsevol altra facultat que no estigui atribuïda d'una manera específica a cap altre òrgan de govern de l'Associació.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Reunió de la \JD}
+
+\begin{enumerate}
+    \item La reunió de la \JD serà en sessió ordinària un cop cada mes, i en sessió extraordinària quan ho consideri necessari la Presidència o a petició de la meitat més una de les persones que constitueixen la Junta.
+    \item La Junta quedarà vàlidament constituïda quan hi assisteixin la meitat més un dels components, essent un d'ells la Presidència o, en la seva absència, la Vice-presidència.
+
+    La \DT d'una Secció assistirà a les reunions de la \JD sempre que ho demani la Presidència. També podrà assistir-hi quan ho estimi convenient, prèvia sol·licitud a la Presidència.
+\end{enumerate}
+
+\Art{Acords}
+
+\begin{enumerate}
+    \item La \JD prendrà els acords per majoria simple de tots els assistents. En cas d'empat, la Presidència disposarà de vot decisiu.
+    \item Els acords de la \JD es faran constar al llibre d'Actes. En iniciar-se cada reunió de la \JD, es llegirà l'Acta de la reunió anterior perquè s'aprovi o es rectifiqui, si és procedent.
+\end{enumerate}
+
+\Art{Atribucions de la Presidència}
+\begin{enumerate}
+    \item La Presidència de l'Associació també ho serà de la \JD.
+
+    En cas d'absència o malaltia la Presidència serà substituïda en les seves funcions per la Vice-presidència o la Vocalia de més edat de la Junta, per aquest ordre.
+
+    \item Són atribucions de la persona que exerceix la Presidència:
+    \begin{enumerate}
+        \item Representar a l'Associació. Els compromisos que com a tal contregui, sempre i quan estiguin d'acord amb els presents Estatuts, obligaran a l'Entitat.
+        \item Signar, prèvia autorització de la \JD, els contractes que com a persona jurídica, hagi de contreure l'Entitat.
+
+        Visar les Actes i els certificats confeccionats per la Secretaria a l'Associació.
+
+        \item Presidir i dirigir els debats, tant de l'\AG com de la \JD.
+        \item Convocar les reunions de l'\AG i de la \JD.
+        \item Designar amb caràcter interí les persones que hagin de cobrir les vacants que s'hagin produït en la \JD fins el pronunciament de la següent \AG. \label{presidencia:designar}
+        \item Les altres que expressament li atribueixin aquests Estatuts o els Reglaments interns de cada Secció.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Atribucions de la Vice-presidència}
+
+\begin{enumerate}
+    \item[] Són atribucions de la persona que exerceix la Vice-presidència:
+    \begin{enumerate}
+        \item Ajudar a la Presidència en totes les seves tasques.
+        \item Substituir a la Presidència en les absències d'aquesta i assumir les seves funcions.
+        \item Portar a terme les tasques que li encomani la \JD.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Atribucions de la Secretaria}
+
+\begin{enumerate}
+    \item[] Són atribucions de la persona que exerceix la Secretaria:
+    \begin{enumerate}
+        \item Redactar i firmar les Actes de les sessions de l'\AG i de les reunions de la \JD, així com custodiar la documentació de l'Associació.
+        \item Portar el Llibre de registre d'associats i un diari on constin totes les activitats i incidències que s'esdevinguin en el si de l'Entitat.
+        \item Signar qualsevol document que lliure l'Entitat amb el vist i plau de la Presidència.
+        \item Realitzar les tasques pròpies de la Secretaria.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Atribucions de la Tresoreria}
+
+\begin{enumerate}
+    \item La Tresoreria tindrà com a funció la custòdia i el control dels recursos de l'Associació així com també l'elaboració del pressupost, el balanç i la liquidació de comptes.
+    \item Són atribucions de la persona que exerceix la Tresoreria:
+    \begin{enumerate}
+        \item Portar els comptes generals de l'Entitat.
+        \item Portar un inventari del patrimoni.
+        \item Formar part de les Comissions especials que es constitueixin referents a temes que li pertoquin.
+        \item Signar els rebuts de quotes i altres documents de tresoreria.
+        \item Pagar les factures aprovades per la \JD, les quals hauran d'ésser visades prèviament per la Presidència. Ingressar el que sobri en dipòsits oberts en establiments de crèdit o d'estalvi.
+        \item Donar compte a la \JD de tot el que faci referència a les quotes dels socis i sòcies, explotació dels béns de l'Entitat i tot allò que econòmicament li és vinculat.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Funcions de les Vocalies}
+
+\begin{enumerate}
+    \item[] Seran funcions dels i de les vocals aquelles que els siguin encomandes per la \JD.
+\end{enumerate}
+
+\Art{La \JG}
+
+\begin{enumerate}
+    \item D'acord amb l'article \ref{confianca}, en cas que l'\AGE denegués la seva confiança a la \JD, es constituirà una \JG.
+    \item L'elecció de la \JG es farà dins la mateixa Assemblea, d'acord amb l'article \ref{aprovacio-balanc}.
+    \item Els components de la Junta s'escolliran entre els assistents a l'\AGE.
+    \item La \JG estarà composta per la Presidència, la Vice-presidència, la Secretaria i la Tresoreria.
+    \item El mandat de la \JG conclourà quan la propera \AGO elegeixi una nova \JD.
+\end{enumerate}
+
+\Seccio{Les Seccions}
+
+\Art{Seccions}
+
+\begin{enumerate}
+    \item L'Associació podrà crear tantes Seccions com cregui escaient per al millor compliment dels seus objectius i finalitats.
+
+    En el moment de la seva constitució consta d'una secció: La Banda de Música.
+
+    \item La Banda de Música, així com altres seccions que es puguin crear, es regirà pel seu propi Reglament Intern, que proposat per la \JD o per la \DT de la Secció, haurà de ser aprovat per l'\AG.
+
+    \item En tot cas, els Reglaments Interns hauran d'ajustar-se a les disposicions següents: \label{seccions:ajustar-disp}
+    \begin{enumerate}
+        \item La Secció estarà constituïda per la \DT i els socis de l'Associació que ho sol·licitin i siguin admesos d'acord amb els criteris que estableixen els seus Reglaments i presents Estatuts.
+        \item La \JD de l'Associació nomenarà la persona que exercirà la Direcció musical de la Secció, amb el vot favorable d'almenys les dues terceres parts dels seus components, prèvia consulta dels músics.
+        \item En ser nomenada, la persona que exercirà la Direcció musical signarà un conveni de prestació de serveis, on necessàriament hi constarà de forma detallada les obligacions que assumeix i la durada del càrrec.
+        \item Els nomenaments de la Sots-direcció i del professorat auxiliar correspondran a la \JD a proposta de la Direcció musical de la Secció, prèvia consulta dels músics.
+        \item Cada una de les Seccions elegirà per votació secreta, abans dels vuit dies posteriors a l'elecció de la \JD, el/la Vocal que l'hagi de representar en aquest òrgan.
+        \item Les Seccions no podran participar en cap acte que directe o indirectament es desdigui del civisme i dels propòsits fundacionals de l'Associació.
+    \end{enumerate}
+\end{enumerate}
+
+\Seccio{Les comissions}
+
+\Art{Constitució i dissolució}
+
+\begin{enumerate}
+    \item[] La \JD consituïrà en el si de l'Entitat les Comissions o grups de treball que consideri necessàries per al bon funcionament de l'Associació, i les dissoldrà quan aquestes hagin finalitzat la tasca encomanada.
+\end{enumerate}
+
+
+\Art{Composició i organització de les comissions}
+
+\begin{enumerate}
+    \item[] Podran ser components d'una Comissió els socis i sòcies que ho sol·licitin. Cada Comissió s'encarregarà de la seva pròpia organització. En tot cas haurà de ser presidida per un membre de la \JD.
+\end{enumerate}
+
+\Art{La comissió assessora}
+
+\begin{enumerate}
+    \item La \JD procurarà constituir una Comissió Assessora formada per representants de les entitats musicals de la Comarca i per persones a títol individual de reconegut prestigi.
+    \item La Comissió Assessora es reunirà a petició de la Presidència com a mínim un cop l'any, i abans de l'\AGO.
+    \item La Comissió Assessora podrà elaborar un informe que reculli els seus suggeriments i propostes. Aquest informe serà sotmès per la \JD a la consideració de l'\AGO.
+\end{enumerate}
+
+\Capitol{Drets i deures dels socis i sòcies}
+
+\Art{Els membres de l'associació}
+
+\begin{enumerate}
+    \item Poden formar part de l'Associació totes les persones que ho sol·licitin per escrit a la \JD, la qual prendrà una decisió sobre les sol·licituds en la primera reunió que tingui lloc i la comunicarà en l'\AG més immediata.
+    \item Els socis menors d'edat, si n'hi ha, no tenen vot en les assemblees ni poden elegir ni ser elegits membres de la \JD.
+\end{enumerate}
+
+\Art{Deures dels socis i sòcies}
+
+\begin{enumerate}
+    \item[] Són deures dels socis i sòcies:
+    \begin{enumerate}
+        \item Ajustar la seva actuació als Estatuts de l'Entitat, i als acords de l'\AG, de la \JD i de la \DT.
+        \item Satisfer puntualment la quota aprovada per l'\AGO.
+        \item Oferir la màxima col·laboració per tal d'aconseguir els objectius de l'Entitat.
+        \item L'assistència a tots els assajos i actuacions acordats per la \DT de la Secció a la que pertanyin.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Drets dels socis i sòcies}
+
+\begin{enumerate}
+    \item[] Són drets dels socis i sòcies:
+    \begin{enumerate}
+        \item Assistir i participar amb veu i vot a l'\AG.
+        \item Elegir i ser elegits per als llocs de representació o per exercir càrrecs directius.
+        \item Participar en totes les activitats que organitza l'Entitat.
+        \item Participar activament en les Comissions i Seccions.
+        \item Exposar a l'Assemblea i a la \JD tot el que considerin que pugui contribuir a fer més plena la vida de l'Associació i més eficaç la realització dels seus objectius socials bàsics.
+        \item Exercir la representació que se'ls hi confereixi a cada cas.
+        \item Sol·liciar i obtenir explicacions sobre l'administració i la gestió de la \JD o dels mandataris de l'Associació.
+        \item Rebre informació sobre les activitats de l'Associació.
+        \item Posseir un exemplar dels Estatuts.
+    \end{enumerate}
+\end{enumerate}
+
+\Art{Pèrdua de la condició de soci o sòcia}
+\ArtLabel{PerduaSoci}
+
+\begin{enumerate}
+    \item Els associats i associades podran causar baixa:
+    \begin{enumerate}
+        \item Per pròpia voluntat manifestada per escrit a la \JD. Causarà baixa després de 30 dies d'haver-se rebut aquest escrit.
+        \item Per manca de pagament d'un mínim d'una anualitat completa sense justificar, a proposta de la Tresoreria i per decisió de la \JD.
+        \item Per faltes en els deures dels socis i sòcies considerades greus per la \JD.
+    \end{enumerate}
+    \item Tots aquests casos contemplats en l'apartat anterior seran ratificats per l'\AGO.
+\end{enumerate}
+
+\Capitol{Economia}
+
+\Art{Patrimoni}
+
+\begin{enumerate}
+    \item[] En el moment de la seva constitució, l'Entitat no té cap patrimoni material.
+\end{enumerate}
+
+\Art{Pressupost i recursos econòmics}
+
+\begin{enumerate}
+    \item El pressupost màxim anual de l'Entitat no podrà superar els deu milions de pessetes.
+    \item Els recursos econòmics dels quals es nodrirà l'Associació seran:
+    \begin{itemize}
+        \item Les quotes dels associats i associades.
+        \item Els imports obtinguts de les actuacions de les seves Seccions.
+        \item Les subvencions de les Institucions públiques i privades.
+        \item Les donacions, herències o llegats fetes a l'Entitat i que puguin ser acceptades per aquesta.
+        \item Les rendes del patrimoni mateix o bé d'altres ingressos que puguin obtenir-se.
+    \end{itemize}
+    \item Tots els membres de l'Associació tenen l'obligació de sostenir-la econòmicament, mitjançant quotes o derrames, de la manera i en la proporció que determini l'\AG, a proposta de la \JD.
+
+    L'\AG podrà establir quotes d'ingrés, quotes periòdiques mensuals -que s'abonaran per mesos, trimestres, semestres o anualitats, segons el que disposi la \JD- i quotes extraordinàries.
+\end{enumerate}
+
+\Art{Exercici econòmic}
+
+\begin{enumerate}
+    \item[] L'exercici econòmic coincidirà amb l'any natural i quedarà tancat el 31 de desembre.
+\end{enumerate}
+
+\Art{Comptes corrents}
+
+\begin{enumerate}
+    \item En els comptes corrents o llibretes d'estalvis obertes en establiments de crèdit o d'estalvi, hi figuraran les signatures del President, el Vice-president, el tresorer i un vocal.
+
+    \item Per poder disposar del fons n'hi haurà prou amb dues signatures, de les quals una haurà de ser necessàriament la del Tresorer o bé la del President.
+\end{enumerate}
+
+\Capitol{Dissolució de l'entitat}
+
+\Art{Acord de dissolució}
+
+\begin{enumerate}
+    \item[] La \UMB només podrà dissoldre's per acord pres per una majoria d'almenys dues terceres parts dels seus socis i sòcies, reunits en \AGE convocada expressament per aquest fi.
+\end{enumerate}
+
+\Art{Procés de Dissolució}
+
+\begin{enumerate}
+    \item Dins la mateixa \AGE a la que es refereix l'article anterior, es nomenarà una Comissió liquidadora per portar a terme el procés de dissolució.
+    \item Els membres de l'Associació estan exempts de responsabilitat. personal. La seva responsabilitat quedarà limitada a complir les obligacions que ells mateixos hagin assumit voluntàriament.
+\end{enumerate}
+
+\Art{Destinació del patrimoni}
+
+\begin{enumerate}
+    \item En cas de dissolució, el patrimoni resultant de la liquidació de béns de l'Associació es destinarà a una altra Entitat Comarcal del Bages amb finalitats similars. En el supòsit que no existís cap Entitat amb aquestes característiques, el patrimoni s'entregarà al Consell Comarcal del Bages per tal que li doni l'ús que consideri més convenient, sempre d'acord amb les finalitats i objectius que estableixen aquests Estatuts.
+\end{enumerate}
+
+%Vegeu \ArtRef{denominacio} i \SeccioRef{finalitats}.
+
+\vspace{1.2cm}
+\noindent\textcolor{TextGray}{\textbf{Diligència final}}\\[0.2cm]
+\noindent Els presents estatuts, amb totes les modificacions, han estat aprovats per unanimitat a l'\AGE del \dataaprov.\\[0.6cm]
+\noindent\begin{tabular}{p{0.46\textwidth} p{0.46\textwidth}}
+\textbf{La Presidència} & \textbf{La Secretaria}\\[2.8cm]
+\hrulefill & \hrulefill\\
+Josep Maria Sala Barberà & Eric Roy Almonacid\\
+\end{tabular}
+
+\end{document}
