@@ -55,6 +55,11 @@
 \newcommand{\email}{\href{mailto:info@umbages.cat}{info@umbages.cat}}
 \newcommand{\web}{\href{https://www.umbages.cat}{www.umbages.cat}}
 
+\newcommand{\PDFTitle}{Estatuts de l'Associació - Unió Musical del Bages}
+\newcommand{\PDFAuthor}{Unió Musical del Bages}
+\newcommand{\PDFSubject}{Estatuts socials de l'associació Unió Musical del Bages}
+\newcommand{\PDFKeywords}{Unió Musical del Bages, UMB, estatuts, associació, música, Bages}
+
 \newcommand{\UMB}{Unió Musical del Bages\xspace}
 \newcommand{\JD}{Junta Directiva\xspace}
 \newcommand{\AG}{Assemblea General\xspace}
@@ -111,8 +116,14 @@
 % =========================
 % Enllaços
 % =========================
-\usepackage[hidelinks]{hyperref}
+\usepackage[unicode,hidelinks]{hyperref}
 \hypersetup{
+  pdftitle={\PDFTitle},
+  pdfauthor={\PDFAuthor},
+  pdfsubject={\PDFSubject},
+  pdfkeywords={\PDFKeywords},
+  pdflang={ca-ES},
+  pdfdisplaydoctitle=true,
   colorlinks=true,
   linkcolor=UMBNavy,
   urlcolor=UMBRed,
